@@ -15,6 +15,8 @@
  */
 package playn.sample.hello.core;
 
+import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsType;
 import react.Slot;
 
 import playn.core.Clock;
@@ -24,8 +26,11 @@ import playn.core.Pointer;
 import playn.scene.GroupLayer;
 import playn.scene.ImageLayer;
 import playn.scene.SceneGame;
-import playn.scene.SceneGame;
 
+import com.google.common.collect.HashBiMap;
+
+
+@JsType
 public class HelloGame extends SceneGame {
 
   public class Pea {
@@ -49,6 +54,26 @@ public class HelloGame extends SceneGame {
 
   public final Pointer pointer;
 
+  public int peaCount = 0;
+  public String dummyString = "playN DummyString";
+
+  public HashBiMap<Integer, Integer> biMap = HashBiMap.create();
+
+  @JsMethod
+  public String getPeaCount() {
+    return "PEA COUNT: " + peaCount;
+  }
+
+  @JsMethod
+  public String getDummyString() {
+    return dummyString;
+  }
+
+  @JsMethod
+  public void giveDummyString(String dummyString) {
+    this.dummyString = dummyString;
+  }
+
   public HelloGame(Platform plat) {
     super(plat, 25); // 25 millis per frame = ~40fps
 
@@ -68,7 +93,11 @@ public class HelloGame extends SceneGame {
     // when the pointer is tapped/clicked, add a new pea
     pointer.events.connect(new Slot<Pointer.Event>() {
       @Override public void onEmit (Pointer.Event event) {
-        if (event.kind.isStart) new Pea(peaLayer, event.x(), event.y());
+        if (event.kind.isStart) {
+          new Pea(peaLayer, event.x(), event.y());
+          peaCount++;
+          biMap.put(peaCount, peaCount);
+        };
       }
     });
   }
