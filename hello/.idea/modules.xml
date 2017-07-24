@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/playn-hello.iml" filepath="$PROJECT_DIR$/playn-hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assets/playn-hello-assets.iml" filepath="$PROJECT_DIR$/assets/playn-hello-assets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/playn-hello-core.iml" filepath="$PROJECT_DIR$/core/playn-hello-core.iml" />
+    </modules>
+  </component>
+</project>
