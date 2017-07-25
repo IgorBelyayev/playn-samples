@@ -15,7 +15,7 @@
 -->
 <module rename-to='hellogame'>
   <inherits name='playn.Scene'/>
-
+  <inherits name='com.google.common.collect.Collect'/>
   <!--
     Optionally, enable gwt-log's advanced logging features:
 

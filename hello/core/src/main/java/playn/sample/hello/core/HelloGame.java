@@ -16,6 +16,7 @@
 package playn.sample.hello.core;
 
 import jsinterop.annotations.JsMethod;
+import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import react.Slot;
 
@@ -30,7 +31,8 @@ import playn.scene.SceneGame;
 import com.google.common.collect.HashBiMap;
 
 
-@JsType
+
+@JsType(namespace = JsPackage.GLOBAL)
 public class HelloGame extends SceneGame {
 
   public class Pea {
@@ -55,9 +57,12 @@ public class HelloGame extends SceneGame {
   public final Pointer pointer;
 
   public int peaCount = 0;
-  public String dummyString = "playN DummyString";
+  public String dummyString = "playN DummyString69";
 
   public HashBiMap<Integer, Integer> biMap = HashBiMap.create();
+
+
+
 
   @JsMethod
   public String getPeaCount() {
@@ -69,6 +74,10 @@ public class HelloGame extends SceneGame {
     return dummyString;
   }
 
+  public String getDummyString2() {
+    return "dummy string 2";
+  }
+
   @JsMethod
   public void giveDummyString(String dummyString) {
     this.dummyString = dummyString;
@@ -76,6 +85,12 @@ public class HelloGame extends SceneGame {
 
   public HelloGame(Platform plat) {
     super(plat, 25); // 25 millis per frame = ~40fps
+
+
+
+    String dummyString = getDummyString();
+    biMap.put(dummyString.hashCode(), 69);
+    biMap.put(getDummyString2().hashCode(), 2);
 
     // combine mouse and touch into pointer events
     pointer = new Pointer(plat);
